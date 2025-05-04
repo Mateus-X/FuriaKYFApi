@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  furia_kyf_sql_server:
+    container_name: furia_kyf_sql_server
+    image: mcr.microsoft.com/mssql/server
+    environment:
+      - MSSQL_USER=sa
+      - MSSQL_SA_PASSWORD=furia-database-PwD2
+      - ACCEPT_EULA=Y
+      - TZ=America/Sao_Paulo
+    ports:
+      - "1433:1433"
