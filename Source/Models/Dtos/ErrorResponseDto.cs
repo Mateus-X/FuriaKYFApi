@@ -2,7 +2,7 @@
 {
     public class ErrorResponseDto
     {
-        public string Details { get; set; }
+        public string detail { get; set; }
 
     }
 }

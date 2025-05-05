@@ -1,6 +1,6 @@
-@DevService_HostAddress = http://localhost:5123
+@FuriaKYFApi_HostAddress = http://localhost:5123
 
-GET {{DevService_HostAddress}}/weatherforecast/
+GET {{FuriaKYFApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

@@ -18,13 +18,13 @@ namespace FuriaKYFApi.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Cpf = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Rg = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    DocumentNumber = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Interests = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Events = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Interests = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Events = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AboutYou = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     Document = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    RedditAccessToken = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -33,11 +33,10 @@ namespace FuriaKYFApi.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fans_Cpf",
+                name: "IX_Fans_DocumentNumber",
                 table: "Fans",
-                column: "Cpf",
-                unique: true,
-                filter: "[Cpf] IS NOT NULL");
+                column: "DocumentNumber",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Fans_Email",
@@ -46,11 +45,11 @@ namespace FuriaKYFApi.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fans_Rg",
+                name: "IX_Fans_RedditAccessToken",
                 table: "Fans",
-                column: "Rg",
+                column: "RedditAccessToken",
                 unique: true,
-                filter: "[Rg] IS NOT NULL");
+                filter: "[RedditAccessToken] IS NOT NULL");
         }
 
         /// <inheritdoc />

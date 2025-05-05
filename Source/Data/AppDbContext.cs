@@ -13,17 +13,17 @@ namespace FuriaKYFApi.Source.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Fan>()
-                .HasIndex(f => f.Rg)
-                .IsUnique();            
-            
-            modelBuilder.Entity<Fan>()
-                .HasIndex(f => f.Cpf)
+                .HasIndex(f => f.DocumentNumber)
                 .IsUnique();
 
             modelBuilder.Entity<Fan>()
                 .HasIndex(f => f.Email)
-                .IsUnique();
-
+                .IsUnique();               
+            
+            modelBuilder.Entity<Fan>()
+                .HasIndex(f => f.RedditAccessToken)
+                .IsUnique();            
+            
             modelBuilder.Entity<Fan>()
                 .Property(f => f.AboutYou)
                 .HasMaxLength(255);
@@ -37,16 +37,16 @@ namespace FuriaKYFApi.Source.Data
                 .HasMaxLength(255);            
             
             modelBuilder.Entity<Fan>()
-                .Property(f => f.Rg)
-                .HasMaxLength(255);            
-            
-            modelBuilder.Entity<Fan>()
-                .Property(f => f.Cpf)
-                .HasMaxLength(255);     
+                .Property(f => f.DocumentNumber)
+                .HasMaxLength(255);       
             
             modelBuilder.Entity<Fan>()
                 .Property(f => f.Email)
-                .HasMaxLength(255);
+                .HasMaxLength(255);            
+            
+            modelBuilder.Entity<Fan>()
+                .Property(f => f.RedditAccessToken)
+                .HasMaxLength(2048);
 
         }
     }

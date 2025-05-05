@@ -34,14 +34,15 @@ namespace FuriaKYFApi.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("Cpf")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Document")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("DocumentNumber")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
@@ -52,11 +53,9 @@ namespace FuriaKYFApi.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.PrimitiveCollection<string>("Events")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.PrimitiveCollection<string>("Interests")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -64,22 +63,21 @@ namespace FuriaKYFApi.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("Rg")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                    b.Property<string>("RedditAccessToken")
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Cpf")
-                        .IsUnique()
-                        .HasFilter("[Cpf] IS NOT NULL");
+                    b.HasIndex("DocumentNumber")
+                        .IsUnique();
 
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("Rg")
+                    b.HasIndex("RedditAccessToken")
                         .IsUnique()
-                        .HasFilter("[Rg] IS NOT NULL");
+                        .HasFilter("[RedditAccessToken] IS NOT NULL");
 
                     b.ToTable("Fans");
                 });

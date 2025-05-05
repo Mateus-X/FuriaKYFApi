@@ -1,4 +1,4 @@
-namespace DevService.Source.Configuration
+namespace FuriaKYFApi.Source.Configuration
 {
     public class GeneralSettings
     {
